@@ -2,7 +2,7 @@
 ## Installation
 
 - `Fork this code`
-- `Edit ucapan, panggilan in App.js`
+- `Edit ucapan, panggilan in src/App.js`
 - `Deploy in heroku, netlify dll`
 
 ### Demo
