@@ -14,7 +14,7 @@ class App extends Component {
       "Sayang orang tua, sayang semuanya",
     ], //edit untuk kata2
     panggilan: ["Angelia❣"], //edit untuk panggilan
-    tanggal_lahir: "30/12/2001", //untuk edit tanggal lahir doi kau
+    tanggal_lahir: "22/12/2002", //untuk edit tanggal lahir doi kau
     nama: "Angel", //edit untuk nama di ballon, maksimal 5 kata aja xixixi
     warna: [
       "#FF6900",
@@ -103,7 +103,7 @@ class App extends Component {
 
   confetti = () => {
     setTimeout(()=>{
-      const { confetti } = this.state
+      //const { confetti } = this.state
       this.setState({
         confetti: false,
       })
