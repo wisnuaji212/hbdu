@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import reactCSS from "reactcss";
-import Confetti from 'react-confetti'
+import Confetti from "react-confetti";
 
 import "./App.css";
 import "./cake.css";
+import "./asset/glitch.css";
 
 class App extends Component {
   static defaultProps = {
     ucapan: [
       "Semoga panjang umur",
       "Diberikan rejeki yg melimpah",
+      "Semoga sayang ke aku :v (ngarep)",
       "Sehat selalu, kurang2in bucin wkwkkw",
       "Sayang orang tua, sayang semuanya",
     ], //edit untuk kata2
@@ -40,7 +42,11 @@ class App extends Component {
       typingSpeed: 150,
       nama: [],
       confetti: true,
+      count_click: 0,
+      time: 20,
     };
+    this.url = require("./asset/music2.mp3");
+    this.audio = new Audio(this.url);
   }
 
   componentDidMount() {
@@ -59,15 +65,42 @@ class App extends Component {
     });
   }
 
+  play() {
+    this.setState({
+      play: true,
+      pause: false,
+    });
+    console.log(this.audio);
+    this.audio.play();
+  }
+
   gantiwarna = () => {
     //this.setState({ displayColorPicker: !this.state.displayColorPicker });
-    this.mengetik();
+    this.setState({ count_click: 1 });
+    if (this.state.count_click < 1) {
+      this.mengetik();
+    }
     this.confetti();
     this.setState({
       bgcolor: this.props.warna[
         Math.floor(Math.random() * this.props.warna.length)
       ],
     });
+    this.setSIMP();
+    this.hitungmundur();
+    this.play();
+  };
+
+  hitungmundur = () => {
+    var waktu = 20;
+    setInterval(() => {
+      waktu--;
+      if (waktu < 0) {
+        // console.log("Y");
+      } else {
+        this.setState({ time: waktu });
+      }
+    }, 1000);
   };
 
   getwaktu = () => {
@@ -102,13 +135,22 @@ class App extends Component {
   };
 
   confetti = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       //const { confetti } = this.state
       this.setState({
         confetti: false,
-      })
-    },3000)
-  }
+      });
+    }, 3000);
+  };
+
+  setSIMP = () => {
+    setTimeout(() => {
+      //const { confetti } = this.state
+      this.setState({
+        bgcolor: "#000001",
+      });
+    }, 20000);
+  };
 
   mengetik = () => {
     const { ucapan } = this.props;
@@ -194,64 +236,79 @@ class App extends Component {
         <main role="main" className="inner">
           <div>
             {this.state.bgcolor !== "#000000" ? (
-              <div>
-              <Confetti 
-                numberOfPieces={300}
-                recycle={false}
-              />
+              this.state.bgcolor === "#000001" ? (
                 <div>
-                  <h2>Happy Birthday {this.state.panggilan}</h2>
-                  <h3>
-                    {this.state.text}
-                    <span id="cursor" />
-                  </h3>
+                  <h1 className="jams">{this.state.curdate}</h1>
+                  <h5>
+                    <span className="glitch" data-text="Heyy, I Love You">
+                      Happy Birthday {this.state.panggilan}
+                    </span>
+                  </h5>
                 </div>
-                <div class="container">
-                  <div
-                    className={
-                      this.state.bgcolor !== "#000000"
-                        ? "balloon"
-                        : "balloon hidden"
-                    }
-                  >
-                    <div>
-                      <span>♥</span>
-                    </div>
-                    {this.state.nama.map((nama) => (
+              ) : (
+                <div>
+                  <Confetti numberOfPieces={300} recycle={false} />
+                  <div>
+                    <h2>Happy Birthday {this.state.panggilan}</h2>
+                    <h3>
+                      {this.state.text}
+                      <span id="cursor" />
+                    </h3>
+                    <h5 className="mt-5">
+                      <i>Wait for {this.state.time}</i>
+                    </h5>
+                  </div>
+                  <div className="container">
+                    <div
+                      className={
+                        this.state.bgcolor !== "#000000"
+                          ? "balloon"
+                          : "balloon hidden"
+                      }
+                    >
                       <div>
-                        <span>{nama}</span>
+                        <span>♥</span>
                       </div>
-                    ))}
-                    <div>
-                      <span>♥</span>
+                      {this.state.nama.map((nama, index) => (
+                        <div key={index}>
+                          <span>{nama}</span>
+                        </div>
+                      ))}
+                      <div>
+                        <span>♥</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )
             ) : (
               <div>
                 <h3>Please turn on the lamp</h3>
               </div>
             )}
-            <div class="cake">
-              <div class="plate"></div>
-              <div class="layer layer-bottom"></div>
-              <div class="layer layer-middle"></div>
-              <div class="layer layer-top"></div>
-              <div class="icing"></div>
-              <div class="drip drip1"></div>
-              <div class="drip drip2"></div>
-              <div class="drip drip3"></div>
-              <div class="candle">
-                {this.state.bgcolor !== "#000000" ? (
-                  <div
-                    className={
-                      this.state.bgcolor !== "#000000"
-                        ? "flame"
-                        : "flame hidden"
-                    }
-                  ></div>
-                ) : null}
+            <div
+              className={this.state.bgcolor === "#000001" ? "hidden" : "show"}
+            >
+              <div className="cake">
+                <div className="plate"></div>
+                <div className="layer layer-bottom"></div>
+                <div className="layer layer-middle"></div>
+                <div className="layer layer-top"></div>
+                <div className="icing"></div>
+                <div className="drip drip1"></div>
+                <div className="drip drip2"></div>
+                <div className="drip drip3"></div>
+                <div className="candle">
+                  {this.state.bgcolor !== "#000000" ? (
+                    <div
+                      className={
+                        this.state.bgcolor !== "#000000"
+                          ? "flame"
+                          : "flame hidden"
+                      }
+                    ></div>
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>
