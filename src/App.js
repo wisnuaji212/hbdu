@@ -16,7 +16,7 @@ class App extends Component {
       "Lah? Siapa yang menyatukan?",
       "Tuhan dengan kuasanya mempertemukan kita dan memberi cinta yang sama",
     ], //edit untuk kata2
-    panggilan: ["Angelia❣"], //edit untuk panggilan
+    panggilan: ["Tiyas❣"], //edit untuk panggilan
     tanggal_lahir: "18/02/2021", //untuk edit tanggal lahir doi kau
     nama: "TIYAS", //edit untuk nama di ballon, maksimal 5 kata aja xixixi
     warna: [
