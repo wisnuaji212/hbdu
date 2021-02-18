@@ -9,15 +9,16 @@ import "./asset/glitch.css";
 class App extends Component {
   static defaultProps = {
     ucapan: [
-      "Semoga panjang umur",
-      "Diberikan rejeki yg melimpah",
-      "Semoga sayang ke aku :v (ngarep)",
-      "Sehat selalu, kurang2in bucin wkwkkw",
-      "Sayang orang tua, sayang semuanya",
+      "Selamat Tanggal 18 ya Ayang",
+      "Semoga langgeng sampai ajal menjemput",
+      "Tetaplah jadi diri kita masing-masing",
+      "Tetapi, Kita adalah satu",
+      "Lah? Siapa yang menyatukan?",
+      "Tuhan dengan kuasanya mempertemukan kita dan memberi cinta yang sama",
     ], //edit untuk kata2
     panggilan: ["Angelia❣"], //edit untuk panggilan
-    tanggal_lahir: "22/12/2002", //untuk edit tanggal lahir doi kau
-    nama: "Angel", //edit untuk nama di ballon, maksimal 5 kata aja xixixi
+    tanggal_lahir: "18/02/2021", //untuk edit tanggal lahir doi kau
+    nama: "TIYAS", //edit untuk nama di ballon, maksimal 5 kata aja xixixi
     warna: [
       "#FF6900",
       "#FCB900",
