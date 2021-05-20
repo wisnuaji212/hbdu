@@ -47,7 +47,7 @@ class App extends Component {
       nama: [],
       confetti: true,
       count_click: 0,
-      time: 20,
+      time: 60,
     };
     this.url = require("./asset/music2.mp3");
     this.audio = new Audio(this.url);
