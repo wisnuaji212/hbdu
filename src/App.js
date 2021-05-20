@@ -96,7 +96,7 @@ class App extends Component {
   };
 
   hitungmundur = () => {
-    var waktu = 20;
+    var waktu = 60;
     setInterval(() => {
       waktu--;
       if (waktu < 0) {
